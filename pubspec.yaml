@@ -1,5 +1,8 @@
 name: formatted_text_hooks
-description: A simple text formatting package. Hooks version of formattd_text
+description: >
+  A simple text formatting package.
+  Use to format text in TextField and Text widgets. 
+  Hooks version of formattd_text.
 version: 1.0.0
 homepage: https://github.com/NirmalAriyathilake/formatted_text_hooks
 

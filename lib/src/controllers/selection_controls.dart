@@ -5,7 +5,6 @@ import '../constants/defaults.dart';
 import '../models/toolbar_action.dart';
 
 class FormattedTextSelectionControls extends MaterialTextSelectionControls {
-  // Padding between the toolbar and the anchor.
   FormattedTextSelectionControls({
     this.actions,
   });
@@ -190,7 +189,8 @@ class _FormattedTextToolbarState extends State<FormattedTextToolbar> {
             label: localizations.selectAllButtonLabel,
             onPressed: widget.handleSelectAll!,
           ),
-        for (final item in widget.items ?? FormattedTextDefaults.formattedTextToolbarDefaultActions)
+        for (final item in widget.items ??
+            FormattedTextDefaults.formattedTextToolbarDefaultActions)
           _buildToolbarButton(
             label: item.label,
             patternChars: item.patternChars,

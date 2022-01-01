@@ -16,7 +16,7 @@ dependencies:
   
   flutter_hooks: ^0.18.0
   formatted_text_hooks:
-    path: ../../formatted_text_hooks
+    path: ../
 
 dev_dependencies:
   flutter_test:

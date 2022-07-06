@@ -27,8 +27,8 @@ class HomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textEditingController = useFormattedTextController();
-    final _textValue = useState('');
+    final textEditingController = useFormattedTextController();
+    final textValue = useState('');
 
     return Scaffold(
       appBar: AppBar(
@@ -39,16 +39,16 @@ class HomePage extends HookWidget {
           Expanded(
             child: Center(
               child: FormattedText(
-                _textValue.value,
+                textValue.value,
               ),
             ),
           ),
           Expanded(
             child: Center(
               child: TextField(
-                controller: _textEditingController,
+                controller: textEditingController,
                 onChanged: (value) {
-                  _textValue.value = value;
+                  textValue.value = value;
                 },
               ),
             ),

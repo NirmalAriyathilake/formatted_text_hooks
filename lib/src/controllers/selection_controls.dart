@@ -16,14 +16,15 @@ class FormattedTextSelectionControls extends MaterialTextSelectionControls {
 
   @override
   Widget buildToolbar(
-      BuildContext context,
-      Rect globalEditableRegion,
-      double textLineHeight,
-      Offset selectionMidpoint,
-      List<TextSelectionPoint> endpoints,
-      TextSelectionDelegate delegate,
-      ClipboardStatusNotifier clipboardStatus,
-      Offset? lastSecondaryTapDownPosition) {
+    BuildContext context,
+    Rect globalEditableRegion,
+    double textLineHeight,
+    Offset selectionMidpoint,
+    List<TextSelectionPoint> endpoints,
+    TextSelectionDelegate delegate,
+    ClipboardStatusNotifier? clipboardStatus,
+    Offset? lastSecondaryTapDownPosition,
+  ) {
     final TextSelectionPoint startTextSelectionPoint = endpoints[0];
     final TextSelectionPoint endTextSelectionPoint =
         endpoints.length > 1 ? endpoints[1] : endpoints[0];
@@ -74,7 +75,7 @@ class FormattedTextToolbar extends StatefulWidget {
 
   final Offset anchorAbove;
   final Offset anchorBelow;
-  final ClipboardStatusNotifier clipboardStatus;
+  final ClipboardStatusNotifier? clipboardStatus;
   final TextSelectionDelegate delegate;
   final VoidCallback? handleCopy;
   final VoidCallback? handleCut;
@@ -92,25 +93,24 @@ class _FormattedTextToolbarState extends State<FormattedTextToolbar> {
     super.didUpdateWidget(oldWidget);
 
     if (widget.clipboardStatus != oldWidget.clipboardStatus) {
-      widget.clipboardStatus.addListener(_onChangedClipboardStatus);
-      oldWidget.clipboardStatus.removeListener(_onChangedClipboardStatus);
+      widget.clipboardStatus?.addListener(_onChangedClipboardStatus);
+      oldWidget.clipboardStatus?.removeListener(_onChangedClipboardStatus);
     }
-    widget.clipboardStatus.update();
+    widget.clipboardStatus?.update();
   }
 
   @override
   void dispose() {
-    if (!widget.clipboardStatus.disposed) {
-      widget.clipboardStatus.removeListener(_onChangedClipboardStatus);
-    }
     super.dispose();
+
+    widget.clipboardStatus?.removeListener(_onChangedClipboardStatus);
   }
 
   @override
   void initState() {
     super.initState();
-    widget.clipboardStatus.addListener(_onChangedClipboardStatus);
-    widget.clipboardStatus.update();
+    widget.clipboardStatus?.addListener(_onChangedClipboardStatus);
+    widget.clipboardStatus?.update();
   }
 
   void _onChangedClipboardStatus() {
@@ -180,7 +180,7 @@ class _FormattedTextToolbarState extends State<FormattedTextToolbar> {
             onPressed: widget.handleCopy!,
           ),
         if (widget.handlePaste != null &&
-            widget.clipboardStatus.value == ClipboardStatus.pasteable)
+            widget.clipboardStatus?.value == ClipboardStatus.pasteable)
           _buildToolbarButton(
             label: localizations.pasteButtonLabel,
             onPressed: widget.handlePaste!,

@@ -3,7 +3,7 @@ description: >
   A simple text formatting package.
   Use to format text in TextField and Text widgets. 
   Hooks version of formattd_text.
-version: 2.0.0
+version: 3.0.0
 homepage: https://github.com/NirmalAriyathilake/formatted_text_hooks
 
 environment:
@@ -11,9 +11,11 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_hooks: ^0.18.5+1
+  formatted_text: ^3.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.1

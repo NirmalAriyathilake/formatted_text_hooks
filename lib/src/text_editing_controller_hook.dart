@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
-import 'editing_controller.dart';
-import '../models/text_formatter.dart';
+import 'package:formatted_text/formatted_text.dart';
 
 class _FormattedTextControllerHookCreator {
   const _FormattedTextControllerHookCreator();
